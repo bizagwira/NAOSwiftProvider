@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'NAOSwiftProvider'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.swift_version    = '5.0'
   s.summary          = 'NAOSwiftProvider framework allows users to easily integrate NAOSDK into the Swift applications.'
 
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '10.0'
   
-  s.source_files = 'Services/*.swift'
+  s.source_files = 'Services/*.swift', 'Libraries/*.modulemap'
   
   s.xcconfig = { 'SWIFT_INCLUDE_PATHS' => '$(PODS_TARGET_SRCROOT)/Libraries' }
 
