@@ -1,42 +1,32 @@
-#
-# Be sure to run `pod lib lint NAOSwiftProvider.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see https://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
   s.name             = 'NAOSwiftProvider'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of NAOSwiftProvider.'
+  s.version          = '1.0.0'
+  s.swift_version    = '5.0'
+  s.summary          = 'NAOSwiftProvider framework allows users to easily integrate NAOSDK into the Swift applications.'
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+  NAOSwiftProvider framework allows users to easily integrate the NAOSDK into the Swift application.
+  It is a kind of bridge between the Swift application and the NAOSDK library that is basically written in Objective-C.
+  NAOSwiftProvider exposes the callbacks and notifications that can be used to communicate with the NAOSDK.
+                         DESC
 
   s.homepage         = 'https://github.com/bizagwira/NAOSwiftProvider'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'bizagwira' => 'honore.bizagwira@polestar.eu' }
   s.source           = { :git => 'https://github.com/bizagwira/NAOSwiftProvider.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
-
-  s.source_files = 'NAOSwiftProvider/Classes/**/*'
+  s.ios.deployment_target = '10.0'
   
-  # s.resource_bundles = {
-  #   'NAOSwiftProvider' => ['NAOSwiftProvider/Assets/*.png']
-  # }
+  s.source_files = 'Services/*.swift'
+  
+  s.xcconfig = { 'SWIFT_INCLUDE_PATHS' => '$(PODS_TARGET_SRCROOT)/Libraries' }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.static_framework = true
+  s.libraries = "c++", "z", "NAOSDK"
+  s.frameworks  = "CoreBluetooth", "CoreLocation", "CoreMotion", "SystemConfiguration"
+  s.requires_arc = true
+
+  s.frameworks = 'UIKit', 'CoreGraphics'
+  s.dependency 'NAOSDK'
 end
