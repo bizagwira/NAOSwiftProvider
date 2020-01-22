@@ -1,0 +1,16 @@
+PODS:
+  - NAOSwiftProvider (0.1.0)
+
+DEPENDENCIES:
+  - NAOSwiftProvider (from `../`)
+
+EXTERNAL SOURCES:
+  NAOSwiftProvider:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  NAOSwiftProvider: c3cb4c98935bf6ab2a2f13a089910a8c8d23882b
+
+PODFILE CHECKSUM: e9a3120c6e0d0a2f2088ae2ecd8183c4db4083ef
+
+COCOAPODS: 1.8.4
