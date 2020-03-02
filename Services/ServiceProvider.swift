@@ -57,9 +57,11 @@ public class ServiceProvider: NSObject, NAOSyncDelegate, NAOSensorsDelegate {
     public func didSynchronizationSuccess() {
         //Post the didSynchronizationSuccess notification
         NotificationCenter.default.post(name: NSNotification.Name("notifySynchronizationSuccess"), object: nil)
+        status = true
     }
     
     public func didSynchronizationFailure(_ errorCode: DBNAOERRORCODE, msg message: String!) {
         ServiceProvider.onErrorEventWithErrorCode?("The synchronization fails! \(String(describing: message)) with error code \(errorCode)")
+        status = false
     }
 }

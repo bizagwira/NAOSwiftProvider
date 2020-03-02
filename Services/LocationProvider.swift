@@ -12,6 +12,7 @@ import NAOSDKModule
 public class LocationProvider: ServiceProvider, NAOLocationHandleDelegate {
     
     var locationHandle: NAOLocationHandle? = nil
+    public var delegate: LocationProviderDelegate?
     
     // Callbacks declarations
     public var onLocationAvailable:((_ latitude: Float, _ longitude: Float, _ altitude: Int) -> ())?
@@ -28,7 +29,7 @@ public class LocationProvider: ServiceProvider, NAOLocationHandleDelegate {
         if (!self.status){
             self.locationHandle?.start()
         }
-        self.status = true
+        delegate?.didApikeyReceived (apikey)
     }
     
     override public func stop() {
@@ -43,11 +44,14 @@ public class LocationProvider: ServiceProvider, NAOLocationHandleDelegate {
     public func didEnterSite (_ name: String){
         //Post the didEnterSite notification
         NotificationCenter.default.post(name: NSNotification.Name("notifyEnterSite"), object: nil)
+        delegate?.didEnterSite(name)
     }
+
 
     public func didExitSite (_ name: String){
         //Post the didExitSite notification
         NotificationCenter.default.post(name: NSNotification.Name("notifyExitSite"), object: nil)
+        delegate?.didExitSite(name)
     }
 
     public func didLocationChange(_ location: CLLocation!) {
@@ -56,33 +60,43 @@ public class LocationProvider: ServiceProvider, NAOLocationHandleDelegate {
         let altitude = Int(location!.altitude as Double)
         // Send the location through the callback
         onLocationAvailable?(latitude, longitude, altitude)
+        
+        delegate?.didLocationChange(location)
     }
 
     public func didLocationStatusChanged(_ status: DBTNAOFIXSTATUS) {
         switch (status) {
             case DBTNAOFIXSTATUS.NAO_FIX_UNAVAILABLE:
                 onLocationStatusChanged?("LOCATION STATUS: FIX_UNAVAILABLE")
+                delegate?.didLocationStatusChanged("LOCATION STATUS: FIX_UNAVAILABLE")
                 break;
             case DBTNAOFIXSTATUS.NAO_FIX_AVAILABLE:
                 onLocationStatusChanged?("LOCATION STATUS: UNAVAILABLE")
+                delegate?.didLocationStatusChanged("LOCATION STATUS: UNAVAILABLE")
                 break;
             case DBTNAOFIXSTATUS.NAO_TEMPORARY_UNAVAILABLE:
                 onLocationStatusChanged?("LOCATION STATUS: TEMPORARY_UNAVAILABLE")
+                delegate?.didLocationStatusChanged("LOCATION STATUS: TEMPORARY_UNAVAILABLE")
                 break;
             case DBTNAOFIXSTATUS.NAO_OUT_OF_SERVICE:
                 onLocationStatusChanged?("LOCATION STATUS: OUT_OF_SERVICE")
+                delegate?.didLocationStatusChanged("LOCATION STATUS: OUT_OF_SERVICE")
                 break;
             default:
                 onLocationStatusChanged?("LOCATION STATUS: UNKNOWN")
+                delegate?.didLocationStatusChanged("LOCATION STATUS: UNKNOWN")
                 break;
         }
+        
     }
 
     public func didFailWithErrorCode(_ errCode: DBNAOERRORCODE, andMessage message: String!) {
         ServiceProvider.onErrorEventWithErrorCode?("NAOLocationHandle fails: \(String(describing: message)) with error code \(errCode)")
+        delegate?.didFailWithErrorCode("NAOLocationHandle fails: \(String(describing: message)) with error code \(errCode)")
     }
 
     deinit {
         print("LocationProvider deinitialized")
     }
 }
+
