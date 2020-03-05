@@ -11,6 +11,7 @@ import NAOSDKModule
 
 public class LocationProvider: ServiceProvider, NAOLocationHandleDelegate {
     
+    
     var locationHandle: NAOLocationHandle? = nil
     public var delegate: LocationProviderDelegate?
     
@@ -91,8 +92,41 @@ public class LocationProvider: ServiceProvider, NAOLocationHandleDelegate {
     }
 
     public func didFailWithErrorCode(_ errCode: DBNAOERRORCODE, andMessage message: String!) {
-        ServiceProvider.onErrorEventWithErrorCode?("NAOLocationHandle fails: \(String(describing: message)) with error code \(errCode)")
         delegate?.didFailWithErrorCode("NAOLocationHandle fails: \(String(describing: message)) with error code \(errCode)")
+    }
+    
+    // MARK: - NAOSensorsDelegate
+    
+    public override func requiresWifiOn() {
+        //Post the requiresWifiOn notification
+        delegate?.requiresWifiOn()
+    }
+    
+    public override func requiresBLEOn() {
+        //Post the requiresBLEOn notification
+        delegate?.requiresBLEOn()
+    }
+    
+    public override func requiresLocationOn() {
+        //Post the requiresLocationOn notification
+        delegate?.requiresLocationOn()
+    }
+    
+    public override func requiresCompassCalibration() {
+        //Post the requiresCompassCalibration notification
+        delegate?.requiresCompassCalibration()
+    }
+    
+     // MARK: - NAOSyncDelegate --
+    
+    public override func didSynchronizationSuccess() {
+        //Post the didSynchronizationSuccess notification
+        delegate?.didSynchronizationSuccess()
+    }
+    
+    public override func didSynchronizationFailure(_ errorCode: DBNAOERRORCODE, msg message: String!) {
+        
+        delegate?.didSynchronizationFailure("The synchronization fail: \(String(describing: message)) with error code \(errorCode)")
     }
 
     deinit {

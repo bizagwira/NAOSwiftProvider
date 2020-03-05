@@ -23,4 +23,18 @@ public protocol LocationProviderDelegate: AnyObject{
     
     func didApikeyReceived (_ apikey: String!)
     
+    // MARK: - NAOSensorsDelegate
+    func requiresWifiOn()
+
+    func requiresBLEOn()
+
+    func requiresLocationOn()
+
+    func requiresCompassCalibration()
+
+     // MARK: - NAOSyncDelegate --
+
+    func didSynchronizationSuccess()
+
+    func didSynchronizationFailure(_ message: String!)
 }

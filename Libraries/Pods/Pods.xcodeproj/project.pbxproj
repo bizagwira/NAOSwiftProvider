@@ -23,6 +23,7 @@
 		21C9B0CB0655F9A4B4A5193B929E3BE7 /* NAOSwiftProvider-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C5360796C727A08B580B97A1987DDC13 /* NAOSwiftProvider-dummy.m */; };
 		664A97C172C48BD909FD4E067AFEA3AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		6F067ED723F699BA00AE10A6 /* LocationProviderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F067ED623F699BA00AE10A6 /* LocationProviderDelegate.swift */; };
+		6F7A8E01240D0FFF00FAEA37 /* ServiceProviderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7A8E00240D0FFF00FAEA37 /* ServiceProviderDelegate.swift */; };
 		6F7ECB9A23D84D62006F5E59 /* BeaconProximityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7ECB9423D84D62006F5E59 /* BeaconProximityProvider.swift */; };
 		6F7ECB9B23D84D62006F5E59 /* AnalyticsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7ECB9523D84D62006F5E59 /* AnalyticsProvider.swift */; };
 		6F7ECB9C23D84D62006F5E59 /* BeaconReportingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7ECB9623D84D62006F5E59 /* BeaconReportingProvider.swift */; };
@@ -79,6 +80,7 @@
 		690990AF74D23CA0481FAFE5471E6BC4 /* NAOCoverageHandleDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NAOCoverageHandleDelegate.h; path = Pod/Classes/NAOCoverageHandleDelegate.h; sourceTree = "<group>"; };
 		6D1578096228F3A6E6B0F140164304EC /* NAOLocationHandleDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NAOLocationHandleDelegate.h; path = Pod/Classes/NAOLocationHandleDelegate.h; sourceTree = "<group>"; };
 		6F067ED623F699BA00AE10A6 /* LocationProviderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProviderDelegate.swift; sourceTree = "<group>"; };
+		6F7A8E00240D0FFF00FAEA37 /* ServiceProviderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProviderDelegate.swift; sourceTree = "<group>"; };
 		6F7ECB9423D84D62006F5E59 /* BeaconProximityProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconProximityProvider.swift; sourceTree = "<group>"; };
 		6F7ECB9523D84D62006F5E59 /* AnalyticsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsProvider.swift; sourceTree = "<group>"; };
 		6F7ECB9623D84D62006F5E59 /* BeaconReportingProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconReportingProvider.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				6F7ECB9823D84D62006F5E59 /* ServiceProvider.swift */,
 				6F7ECB9923D84D62006F5E59 /* GeofencingHandler.swift */,
 				6F067ED623F699BA00AE10A6 /* LocationProviderDelegate.swift */,
+				6F7A8E00240D0FFF00FAEA37 /* ServiceProviderDelegate.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				6F7ECB9B23D84D62006F5E59 /* AnalyticsProvider.swift in Sources */,
 				6F7ECB9D23D84D62006F5E59 /* LocationProvider.swift in Sources */,
 				6F7ECB9F23D84D62006F5E59 /* GeofencingHandler.swift in Sources */,
+				6F7A8E01240D0FFF00FAEA37 /* ServiceProviderDelegate.swift in Sources */,
 				21C9B0CB0655F9A4B4A5193B929E3BE7 /* NAOSwiftProvider-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
