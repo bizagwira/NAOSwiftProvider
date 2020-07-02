@@ -1,1 +1,0 @@
-../../../NAOSDK/Pod/Classes/DBTALERTRULE.h

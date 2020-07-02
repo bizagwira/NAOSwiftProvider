@@ -1,6 +1,0 @@
-framework module NAOSwiftProvider {
-  umbrella header "NAOSwiftProvider-umbrella.h"
-
-  export *
-  module * { export * }
-}

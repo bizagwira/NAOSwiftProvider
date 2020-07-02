@@ -1,1 +1,0 @@
-../../../NAOSDK/Pod/Classes/NAOSyncDelegate.h
